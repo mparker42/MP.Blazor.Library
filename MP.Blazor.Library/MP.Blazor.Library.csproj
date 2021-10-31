@@ -4,11 +4,29 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>mparker42</Authors>
+    <Description>An abstraction layer for the mongo nuget package to allow for easy service switching and unit testing without widescale code refactors.</Description>
+    <PackageProjectUrl>https://github.com/mparker42/MP.Blazor.Library</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mparker42/MP.Blazor.Library</RepositoryUrl>
+    <PackageLicenseExpression>MIT-0</PackageLicenseExpression>
+    <Copyright>Martin Parker</Copyright>
+    <Version>1.0.1</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-rc.2.21480.10" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-rc.2.21480.10" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="MudBlazor" Version="5.1.5" />
   </ItemGroup>
 
 </Project>
