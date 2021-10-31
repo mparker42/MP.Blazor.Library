@@ -1,0 +1,20 @@
+﻿<MudThemeProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+
+<MudLayout MaxWidth="MaxWidth.Medium">
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        @TS.SafeGet(SiteDescription.TitleTranslationKey ?? "")
+    </MudAppBar>
+    @if (SiteDescription.Pages?.Any() ?? false)
+    {
+        <MudDrawer @bind-Open="@_drawerOpen">
+            <NavMenu Pages="SiteDescription.Pages" />
+        </MudDrawer>
+    }
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+
