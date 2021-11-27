@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BlazorApplicationInsights;
+using Microsoft.Extensions.DependencyInjection;
 using MP.Blazor.Library.Models;
 using MP.Blazor.Library.Services;
 using MP.Blazor.Library.Services.Interfaces;
@@ -14,6 +15,7 @@ namespace MP.Blazor.Library
             services.AddHttpClient();
             services.AddSingleton(siteDescription);
             services.AddSingleton<ITranslationService, TranslationService>();
+            services.AddBlazorApplicationInsights();
 
             return services;
         }
