@@ -16,7 +16,18 @@ namespace MP.Blazor.Library
             services.AddHttpClient();
             services.AddSingleton(siteDescription);
             services.AddSingleton<ITranslationService, TranslationService>();
-            services.AddBlazorApplicationInsights();
+            services.AddBlazorApplicationInsights(async applicationInsights =>
+            {
+                var telemetryItem = new TelemetryItem()
+                {
+                    Tags = new Dictionary<string, object>()
+                    {
+                        { "ai.cloud.role", siteDescription.SiteName ?? "SPA" }
+                    }
+                };
+
+                await applicationInsights.AddTelemetryInitializer(telemetryItem);
+            });
 
             return services;
         }
