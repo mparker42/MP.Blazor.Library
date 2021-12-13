@@ -7,5 +7,6 @@
         public string? TitleTranslationKey { get; set; }
         public IEnumerable<NavigatablePage>? Pages { get; set; }
         public string? SiteName { get; set; }
+        public IDictionary<ThemeType, SiteTheme>? Themes { get; set; }
     }
 }
