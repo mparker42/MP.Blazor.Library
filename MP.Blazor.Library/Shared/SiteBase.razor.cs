@@ -42,7 +42,7 @@ namespace MP.Blazor.Library.Shared
                 throw new NullReferenceException("Something has gone wrong with dependency injection");
             }
 
-            var darkThemeModule = await JsRuntime.InvokeAsync<IJSObjectReference>("import", "_content/MP.Blazor.Library/library-js/darkmode.js");
+            var darkThemeModule = await JsRuntime.InvokeAsync<IJSObjectReference>("import", "/_content/MP.Blazor.Library/library-js/darkmode.js");
 
             Console.WriteLine(darkThemeModule);
 
