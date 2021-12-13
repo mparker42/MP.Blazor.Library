@@ -4,7 +4,9 @@
 
 <MudLayout MaxWidth="MaxWidth.Medium">
     <MudAppBar>
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        @if(SiteDescription.Pages?.Any() ?? false) {
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        }
         @TS.SafeGet(SiteDescription.TitleTranslationKey ?? "")
     </MudAppBar>
     @if (SiteDescription.Pages?.Any() ?? false)
