@@ -12,22 +12,24 @@ namespace MP.Blazor.Library
     {
         public static IServiceCollection AddBaseLibrary(this IServiceCollection services, SiteDescription siteDescription)
         {
-            services.AddMudServices();
-            services.AddHttpClient();
-            services.AddSingleton(siteDescription);
-            services.AddSingleton<ITranslationService, TranslationService>();
-            services.AddBlazorApplicationInsights(async applicationInsights =>
-            {
-                var telemetryItem = new TelemetryItem()
-                {
-                    Tags = new Dictionary<string, object>()
+            services
+                .AddMudServices()
+                .AddHttpClient()
+                .AddSingleton(siteDescription)
+                .AddSingleton<ITranslationService, TranslationService>()
+                .AddBlazorApplicationInsights(async applicationInsights =>
                     {
-                        { "ai.cloud.role", siteDescription.SiteName ?? "SPA" }
-                    }
-                };
+                        var telemetryItem = new TelemetryItem()
+                        {
+                            Tags = new Dictionary<string, object>()
+                            {
+                                { "ai.cloud.role", siteDescription.SiteName ?? "SPA" }
+                            }
+                        };
 
-                await applicationInsights.AddTelemetryInitializer(telemetryItem);
-            });
+                        await applicationInsights.AddTelemetryInitializer(telemetryItem);
+                    }
+                );
 
             return services;
         }
